@@ -1,4 +1,4 @@
-package com.bookchatapp.bookchat;
+package com.bookchatbackend.bookchat;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
