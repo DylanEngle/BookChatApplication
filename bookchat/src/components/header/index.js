@@ -90,7 +90,7 @@ Header.ButtonLink = function HeaderButtonLink({children, ...restProps}){
 Header.Logo = function HeaderLogo({to,src, ...restProps}){
     return(
         <Logo {...restProps}>
-            <LogoText>Penguin Books</LogoText>
+            <LogoText>BookBanter</LogoText>
             <ReactRouterLink to={to}>
                 <LogoImage {...restProps} src={logo}></LogoImage>
             </ReactRouterLink>

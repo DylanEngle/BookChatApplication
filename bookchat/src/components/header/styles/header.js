@@ -113,7 +113,7 @@ export const ButtonLink = styled(ReachRouterLink)`
   text-decoration: none;
 
   &:hover {
-    background: #f40612;
+    background: #88E788;
   }
 `;
 
@@ -210,9 +210,10 @@ export const Text = styled.p`
 `;
 
 export const Logo = styled.div`
-  display: grid;
-  align-items: center;
+  display:flex;
+  align-content:center;
   margin-top: 20px;
+  text-align:center;
 
   svg {
     color: white;
@@ -228,6 +229,7 @@ export const LogoImage = styled.img`
   height: 36px;
   width: 134px;
   margin-right: 40px;
+  align-content:center;
 
   @media (min-width: 1449px) {
     height: 45px;

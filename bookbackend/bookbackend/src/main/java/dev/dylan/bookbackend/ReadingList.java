@@ -18,5 +18,5 @@ public class ReadingList {
     @Id
     private ObjectId id;
     
-    private List<String> booklist;
+    private List<Book> booklist;
 }
