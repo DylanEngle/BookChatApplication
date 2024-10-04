@@ -20,9 +20,9 @@ Header.Search = function HeaderSearch({searchTerm, setSearchTerm, ...restProps})
     return (
         <Search {...restProps}>
             <SearchIcon onClick={() => setSearchActive(searchActive => !searchActive)}>
-                <img src='/images/icons/search.png' alt='search icon'></img>
+                <img src='../../../images/search.png' alt='search icon'></img>
             </SearchIcon>
-            <SearchInput value={searchTerm} onChange={({target}) => setSearchTerm(target.value)} placeholder='Search films and series' active={searchActive}>
+            <SearchInput value={searchTerm} onChange={({target}) => setSearchTerm(target.value)} placeholder='Search books' active={searchActive}>
 
             </SearchInput>
         </Search>
@@ -77,7 +77,7 @@ Header.Profile = function HeaderProfile({children, ...restProps}){
 
 Header.Picture = function HeaderPicture({src, ...restProps}){
     return(
-        <Picture {...restProps} src={`/images/users/${src}.png`}></Picture>
+        <Picture {...restProps} src={'../../../images/profilereader.png'}></Picture>
     )
 }
 

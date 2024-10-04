@@ -7,10 +7,10 @@ import * as ROUTES from '../constants/routes';
 
 function Signin(){
     const navigate = useNavigate();
-    const [emailAddress, setEmailAddress] = useState();
+    const [emailAddress, setEmailAddress] = useState('');
     const [isValidEmail, setIsValidEmail] = useState(false);
 
-    const [password, setPassword] = useState();
+    const [password, setPassword] = useState('');
     const [isValidPassword, setIsValidPassword] = useState(false);
 
     const [error, setError] = useState('');
@@ -42,6 +42,8 @@ function Signin(){
             const response = await api.post("/api/v1/users/signin", 
                 {payloadEmailAddress: emailAddress, payloadPassword: password});
                 if(response.status === 200){
+                    localStorage.setItem("username", response.data.username);
+                    console.log(response.data);
                     navigate(ROUTES.BROWSE);
                 }
         } catch (error) {

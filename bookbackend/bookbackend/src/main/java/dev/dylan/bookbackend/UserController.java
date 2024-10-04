@@ -28,13 +28,13 @@ public class UserController {
     }
     
     @PostMapping("/signin")
-    public ResponseEntity<HttpStatus> checkUser(@RequestBody UserPayload userPayload) {
+    public ResponseEntity<User> checkUser(@RequestBody UserPayload userPayload) {
         User foundUser = userService.checkUser(userPayload.getPayloadEmailAddress(), userPayload.getPayloadPassword());
 
     if (foundUser == null) {
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        return new ResponseEntity<User>(foundUser, HttpStatus.NOT_FOUND);
     }
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<User>(foundUser, HttpStatus.OK);
     }
     
 }

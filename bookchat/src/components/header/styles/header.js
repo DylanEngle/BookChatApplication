@@ -70,6 +70,7 @@ export const SearchInput = styled.input`
 export const Search = styled.div`
   display: flex;
   align-items: center;
+  padding: 30px;
 
   svg {
     color: white;
@@ -130,10 +131,10 @@ export const Dropdown = styled.div`
   display: none;
   position: absolute;
   background-color: black;
-  padding: 10px;
-  width: 100px;
+  padding: 5px;
+  width: 150px;
   top: 32px;
-  right: 10px;
+  right: 2px;
 
   ${Group}:last-of-type ${Link} {
     cursor: pointer;
@@ -183,10 +184,15 @@ export const Profile = styled.div`
 `;
 
 export const Feature = styled(Container)`
-  padding: 150px 0 500px 0;
+  padding: 150px 0 250px 0;
   flex-direction: column;
   align-items: normal;
+  display:flex;
+  margin: 0 auto;
   width: 50%;
+  text-align:center;
+  justify-content: center; /* Centers horizontally */
+  align-items: center;     /* Centers vertically */   
 
   @media (max-width: 1100px) {
     display: none;

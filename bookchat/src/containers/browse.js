@@ -1,4 +1,5 @@
 import React, {useState, useContext, useEffect} from 'react';
+import Fuse from 'fuse.js';
 import Header from '../components/header';
 import Card from '../components/card';
 import * as ROUTES from '../constants/routes';
@@ -13,17 +14,21 @@ export function BrowseContainer(){
     const [slideRows, setSlideRows] = useState([]);
 
     const slides = useContent();
-
-    useEffect(() => {
-        setTimeout(() => {
-            setLoading(false);
-        }, 5000);
-    }, []);
-
+    const username = localStorage.getItem("username");
     useEffect(() => {
         setSlideRows(slides);
-        console.log("Slide rows: " + slideRows);
     }, [slides]);
+
+    useEffect(() => {
+        const fuse = new Fuse(slideRows, { keys: ['country', 'title', 'author'] });
+        const results = fuse.search(searchTerm).map(({ item }) => item);
+    
+        if (slideRows.length > 0 && searchTerm.length > 3 && results.length > 0) {
+          setSlideRows(results);
+        } else {
+          setSlideRows(slides);
+        }
+      }, [searchTerm]);
 
     return(
         
@@ -42,7 +47,7 @@ export function BrowseContainer(){
                         <Header.Dropdown>
                             <Header.Group>
                                 <Header.Picture/>
-                                <Header.TextLink></Header.TextLink>
+                                <Header.TextLink>{username}</Header.TextLink>
                             </Header.Group>
                             <Header.Group>
                                 <Header.TextLink>Sign out</Header.TextLink>
@@ -53,21 +58,19 @@ export function BrowseContainer(){
             </Header.Group>
         </Header.Frame>
         <Header.Feature>
-            <Header.FeatureCallOut>Watch Joker Now</Header.FeatureCallOut>
+            <Header.FeatureCallOut>Browse your favorite books!</Header.FeatureCallOut>
             <Header.Text>
-                Forever alone in a crowd, failed comedian Arthur Fleck seeks connection as he walks the streets of Gotham
-                City. Arthur wears two masks -- the one he paints for his day job as a clown, and the guise he projects in a
-                futile attempt to feel like he's part of the world around him.
+                Read reviews about timeless classics, chat with your friends, or come up with a personalized reading list. 
+                Take a look at the options below, or search for a specific book. Have fun!
             </Header.Text>
-            <Header.PlayButton>Play</Header.PlayButton>
         </Header.Feature>
     </Header>
     {slideRows && slideRows.length > 0 ? (
     <Card.Group>
         {slideRows.map((slideItem) => (
-            <Card key={`${slideItem.title.toLowerCase()}`}>
+            <Card key={slideItem._id}>
                 <Card.Entities>
-                        <Card.Item key={slideItem._id} item={slideItem}>
+                        <Card.Item item={slideItem}>
                             <Card.Image src={`../../${slideItem.imageLink}`}>
 
                             </Card.Image>

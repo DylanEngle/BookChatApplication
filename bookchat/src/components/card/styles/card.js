@@ -10,14 +10,19 @@ export const Title = styled.p`
 `;
 
 export const Container = styled.div`
-  display: flex;
+  display: inline-block;
   flex-direction: column;
   margin-bottom: 50px;
+  max-width:25%;
 
   > ${Title} {
     @media (max-width: 1000px) {
       margin-left: 30px;
     }
+  }
+
+  @media (max-height: 200px) {
+    max-width: 75%;
   }
 
   &:last-of-type {
@@ -26,7 +31,8 @@ export const Container = styled.div`
 `;
 
 export const Group = styled.div`
-  display: flex;
+  padding-top:50px;
+  display: inline-block;
   flex-direction: ${({ flexDirection }) => (flexDirection === 'row' ? 'row' : 'column')};
   ${({ alignItems }) => alignItems && `align-items: ${alignItems}`};
   ${({ margin }) => margin && `margin: ${margin}`};
@@ -59,8 +65,8 @@ export const Text = styled.p`
 `;
 
 export const Entities = styled.div`
-  display: flex;
-  flex-direction: row;
+  display: inline-block;
+  max-height: 100px;
 `;
 
 export const Meta = styled.div`
@@ -74,7 +80,7 @@ export const Meta = styled.div`
 export const Image = styled.img`
   border: 0;
   width: 100%;
-  max-width: 305px;
+  max-width: 250px;
   cursor: pointer;
   height: auto;
   padding: 0;
@@ -90,7 +96,7 @@ export const Item = styled.div`
   transition: transform 0.2s;
 
   &:hover {
-    transform: scale(1.3);
+    transform: scale(1.2);
     z-index: 99;
   }
 
