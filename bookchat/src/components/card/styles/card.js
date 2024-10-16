@@ -33,6 +33,7 @@ export const Container = styled.div`
 export const Group = styled.div`
   padding-top:50px;
   display: inline-block;
+  background-color: #a6b697;
   flex-direction: ${({ flexDirection }) => (flexDirection === 'row' ? 'row' : 'column')};
   ${({ alignItems }) => alignItems && `align-items: ${alignItems}`};
   ${({ margin }) => margin && `margin: ${margin}`};
@@ -74,7 +75,7 @@ export const Meta = styled.div`
   position: absolute;
   bottom: 0;
   padding: 10px;
-  background-color: #0000008f;
+  background-color: #C4A484;
 `;
 
 export const Image = styled.img`
@@ -144,7 +145,7 @@ export const Feature = styled.div`
   height: 360px;
   background-position-x: right;
   background-repeat: no-repeat;
-  background-color: black;
+  background-color: #C4A484;
 
   @media (max-width: 1000px) {
     height: auto;
@@ -179,6 +180,32 @@ export const FeatureClose = styled.button`
     width: 24px;
   }
 `;
+
+export const LeaveReviewButton = styled.button`
+  color: black;
+  cursor: pointer;
+  background-color: white;
+
+  img {
+    filter: brightness(0) invert(1);
+    width: 24px;
+  }
+`;
+
+export const AddReadingListButton = styled.button`
+  color: black;
+  cursor: pointer;
+  background-color: white;
+
+  img {
+    filter: brightness(0) invert(1);
+    width: 24px;
+  }
+`;
+
+
+
+
 
 export const Content = styled.div`
   margin: 56px;

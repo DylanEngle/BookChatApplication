@@ -1,5 +1,5 @@
 import React, {useState, useContext, createContext } from 'react';
-import { Container, Group, Title, SubTitle, Text, Entities, Meta, Item, Feature, FeatureTitle, FeatureText, FeatureClose, Maturity, Content,  Image } from './styles/card';
+import { Container, Group, Title, LeaveReviewButton, AddReadingListButton, SubTitle, Text, Entities, Meta, Item, Feature, FeatureTitle, FeatureText, FeatureClose, Maturity, Content,  Image } from './styles/card';
 
 export const FeatureContext = createContext();
 
@@ -61,17 +61,19 @@ Card.Group = function CardGroup({ children, ...restProps }) {
                 {itemFeature.description}
             </FeatureText>
             <FeatureClose onClick={() => setShowFeature(false)}>
-                <img src="/images/icons/close.png" alt="Close" />
+                <img src="../../images/close.png" alt="Close" />
             </FeatureClose>
 
         
 
-        <Group margin="30px 0" flexDirection="row" alignItems="center">
+        
             <Maturity rating={itemFeature.rating}>{itemFeature.maturity < 12 ? 'PG' : itemFeature.maturity}</Maturity>
             <FeatureText fontWeight='bold'>
-                {itemFeature.genre.charAt(0).toUpperCase() + itemFeature.genre.slice(1)}
+                {itemFeature.author + " " + itemFeature.year}
             </FeatureText>
-        </Group>
+
+            <AddReadingListButton>Add to Reading List</AddReadingListButton>
+            <LeaveReviewButton>Leave a Review</LeaveReviewButton>
         {children}
         </Content>
     </Feature>
